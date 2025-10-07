@@ -7,6 +7,7 @@ using System.Windows.Controls;
 
 namespace Sattarov_autoservis
 {
+
     class Manager
     {
         public static Frame MainFrame { get; set; }
