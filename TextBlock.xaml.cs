@@ -20,9 +20,43 @@ namespace Sattarov_autoservis
     /// </summary>
     public partial class TextBlock : Page
     {
-        public TextBlock()
+        private Service _currentServise = new Service();
+        public TextBlock(Service SelectedService)
         {
             InitializeComponent();
+            if (SelectedService != null)
+                _currentServise = SelectedService;
+            DataContext = _currentServise;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder errors = new StringBuilder();
+            if (string.IsNullOrWhiteSpace(_currentServise.Title))
+                errors.AppendLine("Укажите название услуги");
+            if (_currentServise.Cost == 0)
+                errors.AppendLine("Укажите стоимость услуги");
+            if (_currentServise.DiscountInt < 0)
+                errors.AppendLine("Укажите скидку");
+            if (string.IsNullOrWhiteSpace(_currentServise.DurationInSeconds))
+                errors.AppendLine("Укажите длительность услуги");
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+            if (_currentServise.ID == 0)
+                СаттаровАвтоСервисEntities.GetContext().Service.Add(_currentServise);
+            try
+            {
+                СаттаровАвтоСервисEntities.GetContext().SaveChanges();
+                MessageBox.Show("информация сохранена");
+                Manager.MainFrame.GoBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
     }
 }
