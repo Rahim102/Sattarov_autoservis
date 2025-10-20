@@ -28,7 +28,7 @@ namespace Sattarov_autoservis
                 _currentServise = SelectedService;
             DataContext = _currentServise;
         }
-
+        private ClientService _currentClientService = new ClientService();
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();

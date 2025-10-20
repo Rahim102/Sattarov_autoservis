@@ -251,6 +251,13 @@ namespace Sattarov_autoservis
                 ServiceListView.ItemsSource = СаттаровАвтоСервисEntities.GetContext().Service.ToList();
             }
         }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new SignUpPage((sender as Button).DataContext as Service));
+        }
+
+
     }
 }
 

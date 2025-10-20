@@ -31,17 +31,11 @@ namespace Sattarov_autoservis
         {
             get
             {
-                if (Discount != null)
-                {
-                    return (int)(Discount * 100);
-                }
-                else
-                    return 0;
+                return (int)Discount * 100;
             }
             set
             {
-
-             this.Discount = value/100.0;
+                Discount = value / 100.0;
             }
         }
         public string Description { get; set; }
