@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,34 +29,55 @@ namespace Sattarov_autoservis
                 _currentServise = SelectedService;
             DataContext = _currentServise;
         }
-        private ClientService _currentClientService = new ClientService();
+       
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
+  
             if (string.IsNullOrWhiteSpace(_currentServise.Title))
                 errors.AppendLine("Укажите название услуги");
             if (_currentServise.Cost == 0)
                 errors.AppendLine("Укажите стоимость услуги");
-            if (_currentServise.DiscountInt < 0)
-                errors.AppendLine("Укажите скидку");
-            if (string.IsNullOrWhiteSpace(_currentServise.DurationInSeconds))
+            if (_currentServise.DiscountInt < 0 || _currentServise.DiscountInt > 100)
+                errors.AppendLine("Укажите скидку от 0 до 100");
+            if (_currentServise.DurationInSeconds==0)
                 errors.AppendLine("Укажите длительность услуги");
+            if (_currentServise.DurationInSeconds > 240)
+                errors.AppendLine("Длительность не может быть больше 240 минут");
+      
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());
                 return;
             }
-            if (_currentServise.ID == 0)
-                СаттаровАвтоСервисEntities.GetContext().Service.Add(_currentServise);
-            try
+            var context = СаттаровАвтоСервисEntities.GetContext();
+            var existingService = context.Service.FirstOrDefault(p => p.Title == _currentServise.Title && p.ID != _currentServise.ID);
+
+            if (existingService == null)
             {
-                СаттаровАвтоСервисEntities.GetContext().SaveChanges();
-                MessageBox.Show("информация сохранена");
-                Manager.MainFrame.GoBack();
+                if (_currentServise.ID == 0)
+                {
+                    context.Service.Add(_currentServise);
+                }
+                else
+                {
+                    context.Entry(_currentServise).State = EntityState.Modified;
+                }
+
+                try
+                {
+                    context.SaveChanges();
+                    MessageBox.Show("Информация сохранена");
+                    Manager.MainFrame.GoBack();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show("Уже существует такая услуга");
             }
         }
     }

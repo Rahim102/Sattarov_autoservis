@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3fd552f625ac43e9900b392cfe8d91aa" Name="Diagram1">
+      <Diagram DiagramId="99d7d79475c646149daa8c3964d57dd7" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="СаттаровАвтоСервисModel.Client" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="СаттаровАвтоСервисModel.ClientService" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="СаттаровАвтоСервисModel.DocumentByService" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
@@ -27,6 +27,7 @@
         <AssociationConnector Association="СаттаровАвтоСервисModel.FK_ServicePhoto_Service" ManuallyRouted="false" />
         <AssociationConnector Association="СаттаровАвтоСервисModel.AttachedProduct" ManuallyRouted="false" />
         <AssociationConnector Association="СаттаровАвтоСервисModel.TagOfClient" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="СаттаровАвтоСервисModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

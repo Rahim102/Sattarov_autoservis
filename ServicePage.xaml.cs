@@ -85,7 +85,7 @@ namespace Sattarov_autoservis
         List<Service> TableList;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new TextBlock(null));
         }
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -213,8 +213,8 @@ namespace Sattarov_autoservis
                 }
                 if (Ifupdate)
                 {
-                    PageListBox.Items.Clear(); 
-                    for (int i = 1;i<=CountPage;i++)
+                    PageListBox.Items.Clear();
+                    for (int i = 1; i <= CountPage; i++)
                     {
                         PageListBox.Items.Add(i);
                     }
@@ -250,6 +250,7 @@ namespace Sattarov_autoservis
                 СаттаровАвтоСервисEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 ServiceListView.ItemsSource = СаттаровАвтоСервисEntities.GetContext().Service.ToList();
             }
+            UpdateServices();
         }
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)

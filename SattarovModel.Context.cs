@@ -15,7 +15,6 @@ namespace Sattarov_autoservis
     
     public partial class СаттаровАвтоСервисEntities : DbContext
     {
-
         private static СаттаровАвтоСервисEntities _context;
         public static СаттаровАвтоСервисEntities GetContext()
         {
@@ -23,8 +22,6 @@ namespace Sattarov_autoservis
                 _context = new СаттаровАвтоСервисEntities();
             return _context;
         }
-
-
         public СаттаровАвтоСервисEntities()
             : base("name=СаттаровАвтоСервисEntities")
         {
@@ -46,6 +43,5 @@ namespace Sattarov_autoservis
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServicePhoto> ServicePhoto { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

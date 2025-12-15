@@ -116,9 +116,6 @@
     <Compile Include="SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>SattarovModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tag.cs">
       <DependentUpon>SattarovModel.tt</DependentUpon>
     </Compile>
@@ -173,6 +170,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="res\SattarovModel.edmx.diagram" />
     <EntityDeploy Include="SattarovModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SattarovModel.Designer.cs</LastGenOutput>
@@ -196,16 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="res\picture.png" />
-    <Content Include="SattarovModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SattarovModel.Context.cs</LastGenOutput>
-      <DependentUpon>SattarovModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="SattarovModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SattarovModel.edmx</DependentUpon>
-      <LastGenOutput>SattarovModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Услуги автосервиса\diz.jpg" />
     <Resource Include="Услуги автосервиса\rulevoe-upravlenie-avtomobilya.jpg" />
     <Resource Include="Услуги автосервиса\transmission.jpg" />
@@ -227,6 +215,17 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SattarovModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SattarovModel.edmx</DependentUpon>
+      <LastGenOutput>SattarovModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SattarovModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SattarovModel.edmx</DependentUpon>
+      <LastGenOutput>SattarovModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
